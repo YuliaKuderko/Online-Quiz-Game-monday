@@ -17,6 +17,10 @@ username.addEventListener('keyup', () => {
     }
     
 })
+/*
+jyjuyjuykjuki
+*/
+
 
 saveHighScore = e => {
     e.preventDefault() 
