@@ -26,26 +26,26 @@ startGame = () => {
 }
 
 getNewQuestion = () => {
-    currentQuestion = availableQuestions.pop()
+    currentQuestion = availableQuestions.pop() //removing used questions from array
     if(questionCounter === MAX_QUESTIONS) {
-        console.log(questionCounter)
         localStorage.setItem('mostRecentScore', score)
         return window.location.assign('/end.html')
     }
+
+    //game page footer section
     progressText.innerText = `Question ${questionCounter+1} / ${MAX_QUESTIONS}`
     progressBarFull.style.width = `${((questionCounter+1)/MAX_QUESTIONS) * 100}%`
     question.innerText = currentQuestion.question
 
+    //showing all 4 possible answers of the question 
     let j = 0
-
     for(let i = 0; i < currentQuestion.choices.length; i++){
         j++
         document.getElementsByClassName("choice-container")[i].style.display = "flex"
-        console.log(currentQuestion.choices[i])
         choices[i].innerText = currentQuestion.choices[i].answer
     }
+    //showing 2 possible answers of a bool question
     while(j < 4){
-        console.log(j)
         document.getElementsByClassName("choice-container")[j].style.display = "none"
         j++
     }
@@ -53,21 +53,27 @@ getNewQuestion = () => {
     questionCounter++
 }
 
-let compliments = ['amazing.gif','wow.gif','confetti.gif', 'great_job.gif', 'bravo.gif', 'clap.gif']
-let wrongImages = ['booho.gif', 'x.gif', 'wrong.gif', 'wrong2.gif', 'false.gif', 'no.gif']
+//gifs' arrays
+let compliments = ['gifs/amazing.gif','gifs/wow.gif','gifs/confetti.gif', 'gifs/great_job.gif', 'gifs/bravo.gif', 'gifs/clap.gif']
+let wrongImages = ['gifs/booho.gif', 'gifs/x.gif', 'gifs/wrong.gif', 'gifs/wrong2.gif', 'gifs/false.gif', 'gifs/no.gif']
 
 choices.forEach(choice => {
+    //on click listener 
     choice.addEventListener('click', e => {
         if(!acceptingAnswers) return
         acceptingAnswers = false
         const selectedChoice = e.target
         const selectedAnswer = selectedChoice.dataset['number']
 
+        //if the selected answer is correct then make the answer green, else make it red
         const classToApply = currentQuestion.choices[selectedAnswer].is_correct ? 'correct' : 'incorrect'
          
+        //removes the question's difficulty indicator at the end of the questionaire 
          if(questionCounter===MAX_QUESTIONS){
             document.getElementById("difficulty-indicator").style.display = "none"
         }
+
+        //Scoring the correct answers according to the question's difficulty
         if(classToApply === 'correct'){
             switch(difficultyQuestion[questionCounter-1]){
                 case 'easy':
@@ -80,6 +86,8 @@ choices.forEach(choice => {
                     incrementScore(SCORE_50_POINTS)
                     break
             }
+
+            //show a suitable gif according to correct/incorrect answer
             const randomCompliments = Math.floor(Math.random() * compliments.length);
             document.getElementById("compliment").src = compliments[randomCompliments]
             document.getElementById("compliment").style.display = "flex" 
@@ -92,6 +100,7 @@ choices.forEach(choice => {
         
         selectedChoice.parentElement.classList.add(classToApply)
         
+        //produce a new question when the timer is at 0 seconds
         setTimeout(() => {
             selectedChoice.parentElement.classList.remove(classToApply)
             getNewQuestion()
@@ -102,11 +111,13 @@ choices.forEach(choice => {
     })
 })
 
+//sum the final score 
 incrementScore = num => {
     score+=num
     scoreText.innerText = score
 }
 
+//setting a timer to 15 seconds per question
  setTimer = () =>{
      var interval = setInterval(function(){
          timeCount--
@@ -119,13 +130,13 @@ incrementScore = num => {
  }
  
 
+ //fetching the question from the given API
 fetchQuestions = (count = 2)=>{
     document.getElementById("loading").style.display = "block"
     let request = new XMLHttpRequest()
     request.open("GET", `https://opentdb.com/api.php?amount=${count}`)
     request.send()
     request.onload = () => {
-        console.log(request)
         if(request.status !== 200) {
             console.log(`error ${request.status} ${request.statusText}`) 
             return 
@@ -151,7 +162,7 @@ fetchQuestions = (count = 2)=>{
 }
 fetchQuestions(MAX_QUESTIONS)
 
-
+//random function
 randomize = (arr) => {
     for (var i = 0; i < arr.length; i++){
         const original = arr[i]
@@ -163,6 +174,7 @@ randomize = (arr) => {
     return arr
 }
 
+//fixing gibberish characters
 decodeHTMLEntities =(text) =>{
     var textArea = document.createElement('textarea');
     textArea.innerHTML = text;

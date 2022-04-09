@@ -1,5 +1,7 @@
-@import url('https://fonts.googleapis.com/css2?family=Chakra+Petch&family=Comfortaa&family=Fredericka+the+Great&family=Lobster&family=Rubik+Bubbles&family=Rubik+Wet+Paint&display=swap');
+/* Font Family Import */
+@import url('https://fonts.googleapis.com/css2?family=Chakra+Petch&family=Lobster&family=Rubik+Bubbles&display=swap');
 
+/* General Quiz Design */
 :root{
     background-color: rgb(216, 250, 245);
     margin-top: 100px;
@@ -23,6 +25,7 @@ h2{
     margin-bottom: 4rem;
 }
 
+/* Home Page Title */
 .main-title{
     font-size: 8rem;
     color: rgb(131, 237, 224);
@@ -30,6 +33,7 @@ h2{
     margin-bottom: 300px;
 }
 
+/* Home Page Container */
 .home-container{
     display: flex;
     justify-content: center;
@@ -118,6 +122,210 @@ h2{
     font-size: 2.5rem;
 }
 
+
+
+/*Game (Questions) Page */
+.title{
+    font-size: 8rem;
+    color: rgb(131, 237, 224);
+    margin-bottom: 5rem;
+    text-shadow: 7px 10px rgb(30, 213, 190);
+}
+
+
+h2{
+    font-size: 4rem !important;
+    color: rgb(131, 237, 224) !important;
+    margin-bottom: 4rem !important;
+}
+
+.choice-container{
+    display: flex;
+    margin-bottom: 0.8rem;
+    width: 100%;
+    border-radius: 5px;
+    background:rgb(131, 237, 224);
+    font-size: 3rem;
+    min-width: 80rem;
+}
+
+.choice-container:hover{
+    cursor: pointer;
+    box-shadow: 0 0.4rem 1.4rem 0 rgba(131, 237, 224,0.5);
+    transform: scale(1.02);
+    transition: all 100ms ease-in-out;
+}
+
+#Questions{
+    box-shadow: 0px 3px 5px 1px rgba(0,0,0,0.5);
+    padding: 70px;
+    border-radius: 15px;
+    background-color: white;
+    margin-bottom: 100px;
+    position: relative;
+}
+
+#compliment{
+    position: absolute;
+    top: 30%;
+    left: 30%;
+    right: 30%;
+    bottom: 30%;  
+}
+
+#question{
+    text-align: center;
+    text-shadow: 3px 1px rgb(30, 213, 190);
+}
+
+.choice-prefix{
+    padding: 2rem 2.5rem;
+    color: white;
+    font-weight: bold;
+    align-items: center;
+    background-color: rgba(30, 213, 190, 0.9);
+    box-shadow: 0px 0px 5px 0px rgba(25, 172, 152, 0.9);
+}
+
+.choice-text{
+    padding: 2rem;
+    width: 100%;
+    color: white;
+    font-size: 2.8rem;
+}
+
+.correct{
+    background-color: rgb(131, 224, 131);
+}
+
+.incorrect{
+   background-color: rgb(218, 63, 63);
+}
+
+#hud{
+    display: flex;
+    justify-content: space-between;
+    margin-top: 30px;
+}
+
+.hud-prefix{
+    text-align: center;
+    font-size: 3.8rem;
+    margin-top: 10px;
+    font-weight: bold;
+    color: rgb(131, 237, 224);
+    text-shadow: 2px 2px rgb(30, 213, 190);
+}
+
+.hud-main-text{
+    text-align: center;
+    font-size: 120px;
+    margin-top: 20px;
+    font-weight: bold;
+    color: rgb(30, 213, 190);
+}
+
+/* Time Left Section*/
+.timer{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    height: 65px;
+    margin-top: 60px;
+    background-color: rgb(131, 237, 224);
+    border: 1px solid rgb(30, 213, 190);
+    padding: 25px 30px 25px;
+    border-radius: 7px;
+}
+
+.time-text{
+    margin-right: 20px;
+    font-size: 32px;
+    font-weight: 600;
+    user-select: none;
+    letter-spacing: 2px;
+}
+
+#time-sec{
+    font-size: 32px;
+    font-weight: bold;
+    color: white;
+    height: 50px;
+    width: 50px;
+    background: rgba(30, 213, 190, 0.959);
+    text-align: center;
+    line-height: 50px;
+    border-radius: 5px;
+    user-select: none;
+}
+
+
+#grey-border{
+    margin-top: 120px;
+    border-top: 1px solid lightgray;
+}
+
+#difficulty-indicator{
+    font-family: 'Lobster', cursive;
+    float: right;
+    font-size: 2.5rem;
+    margin-top: 50px;
+    letter-spacing: 6px;
+    font-weight: bold;
+    text-transform: capitalize;
+    outline-style: outset;
+    outline-color: rgb(199, 199, 199);
+    color: grey;
+    padding: 20px;
+    padding-left: 30px;
+    padding-right: 30px;
+    border-radius: 10px;
+    box-shadow: 0px 0px 10px 0px rgb(30, 213, 190, 0.9);
+}
+
+#difficulty-indicator:hover{
+    cursor: pointer;
+    transition: transform 200ms;
+    transform: scale(1.03);
+}
+
+/* Progress Bar Section*/
+.footer-item{
+    width: 50%;
+}
+
+#progressBar{
+    width: 20rem;
+    height: 3rem;
+    border: solid rgb(131, 237, 224);
+    margin-top: 2rem;
+    border-radius: 50px;
+    overflow: hidden;
+    margin-bottom: 30px;
+}
+
+#progressBarFull{
+    height: 3rem;
+    background: rgb(131, 237, 224);
+    width: 0%;
+}
+
+#progressText{
+    display: flex;
+    font-size: 2.5rem;
+    font-weight: bold;
+    padding-top: 30px;
+    color: grey;
+}
+
+
+@media screen and (max-width: 768px){
+    .choice-container{
+        min-width: 730px;
+    }
+}
+
+
 /* End Page */
  .end-form-container{
      display: flex;
@@ -172,4 +380,36 @@ h2{
 .end-class h1{
     position: absolute;
     z-index: 1;
+}
+
+
+/* High Score Page */
+#leader-board{
+    font-size: 180px;
+    color: rgb(131, 237, 224);
+    margin-bottom: 5rem;
+    text-shadow: 7px 10px rgb(30, 213, 190);
+    margin-top: 100px;
+}
+
+#highScoresList{
+    list-style: none;
+    margin-bottom: 4rem;
+    color: grey;
+    font-weight: bold;
+    border-width: 20px;
+    border-style: ridge;
+    box-shadow: 1.4rem 1.4rem 1.4rem 0 rgb(131, 237, 224,0.5);
+    border-color: rgba(255, 255, 0, 0.575);
+    padding: 100px 350px 450px;
+}
+
+.high-score{
+    margin-bottom: 0.5rem;
+    margin-top: 30px;
+    border-bottom: 3px solid lightgray;
+    padding-left: 200px;
+    padding-right: 200px;
+    text-align: center;
+    font-size: 55px;
 }

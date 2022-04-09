@@ -10,18 +10,19 @@ const MAX_HIGH_SCORES = 10
 
 finalScore.innerText = mostRecentScore
 
+//if there's no username input, make the save button disabled, else the button will be enabled
 username.addEventListener('keyup', () => {
     saveScoreBtn.setAttribute('disabled','disabled')
     if (username.value != "") {
         saveScoreBtn.removeAttribute('disabled')
     }
-    
 })
 
 
 saveHighScore = e => {
     e.preventDefault() 
 
+    //gets the score's sum 
     const score = {
         score: mostRecentScore,
         name: username.value
@@ -29,6 +30,7 @@ saveHighScore = e => {
 
     highScores.push(score)
 
+    //sorting the scores in a descending order 
     highScores.sort((a, b) => {
         return b.score - a.score 
     })
