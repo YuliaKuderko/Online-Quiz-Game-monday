@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Nova+Square&family=Roboto:ital@0;1&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Comfortaa&family=Dancing+Script:wght@600&family=Josefin+Sans&family=Nova+Square&family=Roboto:ital@0;1&display=swap');
 
 :root{
     background-color: rgb(216, 250, 245);
@@ -9,7 +9,7 @@
 * {
     margin: 0;
     padding: 0;
-    font-family: 'Nova Square', cursive;
+    font-family: 'Comfortaa', cursive;
 }
 
 h1{
@@ -97,11 +97,11 @@ h2{
      display: flex;
      flex-direction: column;
      align-items: center;
+     margin-top: 100px;
  }
 
  input{
-     margin-bottom: 1rem;
-     width: 20rem;
+     width: 30rem;
      padding: 1.5rem;
      font-size: 1.8rem;
      border: none;
@@ -110,18 +110,17 @@ h2{
 
  input::placeholder{
      color: #aaa;
+     text-align: center;
  }
 
  #username{
      margin-bottom: 3rem;
-     width: 100%;
-     outline: none;
- }
-
- #end-text{
-     font-size: 2.4rem;
-     color: white;
-     text-align: center;
+     width: 170%;
+     margin-top: 70px;
+     color: #aaa;
+     font-weight: bold;
+     outline-style: double;
+     outline-width: 10px;
  }
 
  #saveScoreBtn{
@@ -134,7 +133,8 @@ h2{
 
 #finalscore {
     font-size: 130px;
-    color: black;
+    color: rgb(182, 0, 0);
+    font-weight: bold;
 }
 
 .end-class{

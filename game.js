@@ -33,7 +33,7 @@ getNewQuestion = () => {
         return window.location.assign('/end.html')
     }
     progressText.innerText = `Question ${questionCounter+1} of ${MAX_QUESTIONS}`
-    progressBarFull.style.width = `${(questionCounter/MAX_QUESTIONS) * 100}%`
+    progressBarFull.style.width = `${(questionCounter+1/MAX_QUESTIONS) * 100}%`
     question.innerText = currentQuestion.question
 
     let j = 0
