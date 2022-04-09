@@ -32,8 +32,8 @@ getNewQuestion = () => {
         localStorage.setItem('mostRecentScore', score)
         return window.location.assign('/end.html')
     }
-    progressText.innerText = `Question ${questionCounter+1} of ${MAX_QUESTIONS}`
-    progressBarFull.style.width = `${(questionCounter+1/MAX_QUESTIONS) * 100}%`
+    progressText.innerText = `Question ${questionCounter+1} / ${MAX_QUESTIONS}`
+    progressBarFull.style.width = `${((questionCounter+1)/MAX_QUESTIONS) * 100}%`
     question.innerText = currentQuestion.question
 
     let j = 0
@@ -53,7 +53,8 @@ getNewQuestion = () => {
     questionCounter++
 }
 
-let images = ['amazing.gif','wow.gif','confetti.gif', 'great_job.gif', 'bravo.gif', 'clap.gif']
+let compliments = ['amazing.gif','wow.gif','confetti.gif', 'great_job.gif', 'bravo.gif', 'clap.gif']
+let wrongImages = ['booho.gif', 'x.gif', 'wrong.gif', 'wrong2.gif', 'false.gif', 'no.gif']
 
 choices.forEach(choice => {
     choice.addEventListener('click', e => {
@@ -63,8 +64,10 @@ choices.forEach(choice => {
         const selectedAnswer = selectedChoice.dataset['number']
 
         const classToApply = currentQuestion.choices[selectedAnswer].is_correct ? 'correct' : 'incorrect'
-        difficultyIndicator.innerHTML=difficultyQuestion[questionCounter-1]
-
+         
+         if(questionCounter===MAX_QUESTIONS){
+            document.getElementById("difficulty-indicator").style.display = "none"
+        }
         if(classToApply === 'correct'){
             switch(difficultyQuestion[questionCounter-1]){
                 case 'easy':
@@ -77,18 +80,24 @@ choices.forEach(choice => {
                     incrementScore(SCORE_50_POINTS)
                     break
             }
-            const randomImages = Math.floor(Math.random() * images.length);
-            document.getElementById("compliment").src = images[randomImages]
+            const randomCompliments = Math.floor(Math.random() * compliments.length);
+            document.getElementById("compliment").src = compliments[randomCompliments]
+            document.getElementById("compliment").style.display = "flex" 
+        } else if(classToApply === 'incorrect'){
+            const randomWrongs = Math.floor(Math.random() * wrongImages.length);
+            document.getElementById("compliment").src = wrongImages[randomWrongs]
             document.getElementById("compliment").style.display = "flex" 
         }
+
         
         selectedChoice.parentElement.classList.add(classToApply)
         
         setTimeout(() => {
             selectedChoice.parentElement.classList.remove(classToApply)
             getNewQuestion()
+            difficultyIndicator.innerHTML=difficultyQuestion[questionCounter-1]
             document.getElementById("compliment").style.display = "none"
-        },1500)
+        },1300)
         timeCount = 16
     })
 })
@@ -97,7 +106,6 @@ incrementScore = num => {
     score+=num
     scoreText.innerText = score
 }
-
 
  setTimer = () =>{
      var interval = setInterval(function(){

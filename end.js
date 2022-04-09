@@ -6,7 +6,7 @@ const mostRecentScore = localStorage.getItem('mostRecentScore')
 
 const highScores = JSON.parse(localStorage.getItem('highScores')) || []
 
-const MAX_HIGH_SCORES = 5
+const MAX_HIGH_SCORES = 10
 
 finalScore.innerText = mostRecentScore
 
@@ -17,9 +17,6 @@ username.addEventListener('keyup', () => {
     }
     
 })
-/*
-jyjuyjuykjuki
-*/
 
 
 saveHighScore = e => {
@@ -36,7 +33,7 @@ saveHighScore = e => {
         return b.score - a.score 
     })
 
-    highScores.splice(5)
+    highScores.splice(10)
 
     localStorage.setItem('highScores', JSON.stringify(highScores))
     window.location.assign('/highScores.html')

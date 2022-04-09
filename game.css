@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Comfortaa&family=Dancing+Script:wght@600&family=Josefin+Sans&family=Nova+Square&family=Roboto:ital@0;1&family=Satisfy&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Chakra+Petch&family=Comfortaa&family=Dancing+Script:wght@600&family=Josefin+Sans&family=Lobster&family=Nova+Square&family=Roboto:ital@0;1&family=Rubik+Wet+Paint&family=Satisfy&display=swap');
 .title{
     font-size: 8rem;
     color: rgb(131, 237, 224);
@@ -32,7 +32,7 @@ h2{
 
 #question{
     text-align: center;
-    text-shadow: 2px 1px rgb(30, 213, 190) ;
+    text-shadow: 3px 1px rgb(30, 213, 190);
 }
 
 .choice-prefix{
@@ -82,6 +82,7 @@ h2{
     font-size: 32px;
     font-weight: 600;
     user-select: none;
+    letter-spacing: 2px;
 }
 
 #time-sec{
@@ -104,6 +105,7 @@ h2{
     margin-top: 10px;
     font-weight: bold;
     color: rgb(131, 237, 224);
+    text-shadow: 2px 2px rgb(30, 213, 190);
 }
 
 .hud-main-text{
@@ -120,17 +122,19 @@ h2{
 }
 
 #difficulty-indicator{
-    font-family: 'Satisfy', cursive;
+    font-family: 'Lobster', cursive;
     float: right;
     font-size: 2.5rem;
     margin-top: 50px;
-    letter-spacing: 4px;
+    letter-spacing: 6px;
     font-weight: bold;
     text-transform: capitalize;
     outline-style: outset;
     outline-color: rgb(199, 199, 199);
     color: grey;
-    padding: 15px;
+    padding: 20px;
+    padding-left: 30px;
+    padding-right: 30px;
     border-radius: 10px;
     box-shadow: 0px 0px 10px 0px rgb(30, 213, 190, 0.9);
 }
@@ -172,7 +176,7 @@ h2{
 
 #Questions{
     box-shadow: 0px 3px 5px 1px rgba(0,0,0,0.5);
-    padding: 50px;
+    padding: 70px;
     border-radius: 15px;
     background-color: white;
     margin-bottom: 100px;
@@ -186,6 +190,14 @@ h2{
     right: 30%;
     bottom: 30%;  
 }
+
+/* #wrong{
+    position: absolute;
+    top: 30%;
+    left: 30%;
+    right: 30%;
+    bottom: 30%; 
+} */
 
 
 @media screen and (max-width: 768px){
