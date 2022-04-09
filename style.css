@@ -175,7 +175,8 @@ h2{
 
 #question{
     text-align: center;
-    text-shadow: 3px 1px rgb(30, 213, 190);
+    text-shadow: 3px 2px rgb(30, 213, 190);
+    color: rgba(180, 180, 180, 0.664) !important;
 }
 
 .choice-prefix{
@@ -213,7 +214,7 @@ h2{
     font-size: 3.8rem;
     margin-top: 10px;
     font-weight: bold;
-    color: rgb(131, 237, 224);
+    color: grey;
     text-shadow: 2px 2px rgb(30, 213, 190);
 }
 
@@ -269,7 +270,7 @@ h2{
     font-family: 'Lobster', cursive;
     float: right;
     font-size: 2.5rem;
-    margin-top: 50px;
+    margin-top: 60px;
     letter-spacing: 6px;
     font-weight: bold;
     text-transform: capitalize;
