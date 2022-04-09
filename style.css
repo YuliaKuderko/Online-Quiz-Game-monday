@@ -36,11 +36,12 @@ h2{
     align-items: center;
     max-width: 80rem;
     margin: 0 auto;
-    padding: 300px;
+    padding: 200px;
     border-style: ridge;
     border-width: 30px;
     border-color: rgb(131, 237, 224);
     margin-top: 250px;
+    margin-bottom: 50px;
 }
 
 .container{
