@@ -1,6 +1,13 @@
+.title{
+    font-size: 8rem;
+    color: rgb(131, 237, 224);
+    margin-bottom: 5rem;
+    text-shadow: 7px 10px rgb(30, 213, 190) ;
+}
+
 h2{
-    font-size: 4.6rem !important;
-    color: rgb(206, 140, 139) !important;
+    font-size: 4rem !important;
+    color: rgb(131, 237, 224) !important;
     margin-bottom: 4rem !important;
 }
 
@@ -9,33 +16,39 @@ h2{
     margin-bottom: 0.8rem;
     width: 100%;
     border-radius: 5px;
-    background:rgb(206, 140, 139) ;
+    background:rgb(131, 237, 224);
     font-size: 3rem;
     min-width: 80rem;
 }
 
 .choice-container:hover{
     cursor: pointer;
-    box-shadow: 0 0.4rem 1.4rem 0 rgba(206, 140, 139,0.5);
+    box-shadow: 0 0.4rem 1.4rem 0 rgba(131, 237, 224,0.5);
     transform: scale(1.02);
     transition: all 100ms ease-in-out;
+}
+
+#question{
+    text-align: center;
+    text-shadow: 2px 1px rgb(30, 213, 190) ;
 }
 
 .choice-prefix{
     padding: 2rem 2.5rem;
     color: white;
     align-items: center;
-    background-color: rgba(167, 106, 106, 0.959);
-    box-shadow: 0px 0px 5px 0px rgba(207, 167, 167, 0.959);
+    background-color: rgba(30, 213, 190, 0.9);
+    box-shadow: 0px 0px 5px 0px rgba(25, 172, 152, 0.9);
 }
 
 .choice-text{
     padding: 2rem;
     width: 100%;
+    color: white;
 }
 
 .correct{
-    background-color: lightgreen;
+    background-color: rgb(131, 224, 131);
 }
 
 .incorrect{
@@ -53,11 +66,11 @@ h2{
     align-items: center;
     justify-content: space-between;
     height: 65px;
-    margin-top: 50px;
-    background-color: rgb(241, 200, 200);
-    border: 1px solid rgb(206, 140, 139);
-    padding: 25px 20px 25px;
-    border-radius: 5px;
+    margin-top: 10px;
+    background-color: rgb(131, 237, 224);
+    border: 1px solid rgb(30, 213, 190);
+    padding: 25px 30px 25px;
+    border-radius: 7px;
 }
 
 .time-text{
@@ -71,14 +84,15 @@ h2{
     font-size: 32px;
     font-weight: 500;
     color: white;
-    height: 45px;
-    width: 45px;
-    background: rgba(167, 106, 106, 0.959);
+    height: 50px;
+    width: 50px;
+    background: rgba(30, 213, 190, 0.959);
     text-align: center;
-    line-height: 45px;
+    line-height: 50px;
     border-radius: 5px;
     user-select: none;
 }
+
 
 .hud-prefix{
     text-align: center;
@@ -89,35 +103,53 @@ h2{
     text-align: center;
 }
 
+#grey-border{
+    margin-top: 120px;
+    border-top: 1px solid lightgray;
+}
+
+#difficulty-indicator{
+    float: right;
+    font-size: 2.5rem;
+    margin-top: 25px;
+    font-weight: bold;
+    text-transform: capitalize;
+    text-decoration: underline;
+    color: grey;
+    padding: 10px;
+    border: 3px solid rgb(131, 237, 224);
+    border-radius: 10px;
+    box-shadow: 0px 0px 10px 0px rgb(30, 213, 190, 0.9);
+}
+
+.footer-item{
+    width: 50%;
+}
+
 #progressBar{
     width: 20rem;
     height: 3rem;
-    border: solid rgb(206, 140, 139);
+    border: solid rgb(131, 237, 224);
     margin-top: 2rem;
     border-radius: 50px;
     overflow: hidden;
-    justify-content: flex-start;
-    display: flex;
     margin-bottom: 30px;
-    
 }
 
 #progressBarFull{
     height: 3rem;
-    background: rgb(206, 140, 139);
+    background: rgb(131, 237, 224);
     width: 0%;
 }
 
 #progressText{
-    text-align: center;
-    font-size: 2rem;
     display: flex;
+    font-size: 2.5rem;
     font-weight: bold;
-    justify-content: flex-start;
-    border-top: 1px solid lightgray;
     padding-top: 30px;
-    margin-top: 100px;
+    color: grey;
 }
+
 
 #Questions{
     box-shadow: 0px 3px 5px 1px rgba(0,0,0,0.5);
@@ -137,9 +169,8 @@ h2{
 }
 
 
-
 @media screen and (max-width: 768px){
     .choice-container{
-        min-width: 40rem;
+        min-width: 730px;
     }
 }

@@ -2,8 +2,7 @@ const question = document.querySelector('#question')
 const choices =  Array.from(document.querySelectorAll('.choice-text'))
 const progressText = document.querySelector('#progressText')
 const scoreText = document.querySelector('#score')
-
-
+const difficultyIndicator = document.querySelector('#difficulty-indicator')
 
 let currentQuestion = {}
 let acceptingAnswers = false
@@ -16,7 +15,7 @@ let difficultyQuestion = []
 const SCORE_10_POINTS = 10
 const SCORE_20_POINTS = 20
 const SCORE_50_POINTS = 50
-const MAX_QUESTIONS = 5
+const MAX_QUESTIONS = 10
 let timeCount = 15
 
 startGame = () => {
@@ -29,10 +28,11 @@ startGame = () => {
 getNewQuestion = () => {
     currentQuestion = availableQuestions.pop()
     if(questionCounter === MAX_QUESTIONS) {
+        console.log(questionCounter)
         localStorage.setItem('mostRecentScore', score)
         return window.location.assign('/end.html')
     }
-    progressText.innerText = `Question ${questionCounter} of ${MAX_QUESTIONS}`
+    progressText.innerText = `Question ${questionCounter+1} of ${MAX_QUESTIONS}`
     progressBarFull.style.width = `${(questionCounter/MAX_QUESTIONS) * 100}%`
     question.innerText = currentQuestion.question
 
@@ -63,7 +63,7 @@ choices.forEach(choice => {
         const selectedAnswer = selectedChoice.dataset['number']
 
         const classToApply = currentQuestion.choices[selectedAnswer].is_correct ? 'correct' : 'incorrect'
-        console.log(difficultyQuestion[questionCounter-1])
+        difficultyIndicator.innerHTML=difficultyQuestion[questionCounter-1]
 
         if(classToApply === 'correct'){
             switch(difficultyQuestion[questionCounter-1]){
@@ -93,6 +93,11 @@ choices.forEach(choice => {
     })
 })
 
+incrementScore = num => {
+    score+=num
+    scoreText.innerText = score
+}
+
 
  setTimer = () =>{
      var interval = setInterval(function(){
@@ -105,11 +110,6 @@ choices.forEach(choice => {
     },1000)
  }
  
-
-incrementScore = num => {
-    score+=num
-    scoreText.innerText = score
-}
 
 fetchQuestions = (count = 2)=>{
     document.getElementById("loading").style.display = "block"
@@ -141,7 +141,6 @@ fetchQuestions = (count = 2)=>{
         document.getElementById("question").style.display = "block"                              
     }
 }
-
 fetchQuestions(MAX_QUESTIONS)
 
 
