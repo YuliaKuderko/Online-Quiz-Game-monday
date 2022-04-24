@@ -27,7 +27,7 @@ startGame = () => {
 
 getNewQuestion = () => {
     currentQuestion = availableQuestions.pop() //removing used questions from array
-    if(questionCounter === MAX_QUESTIONS) {
+    if(questionCounter === MAX_QUESTIONS) { //check if we finished all the questions, if so store the score and move to end page
         localStorage.setItem('mostRecentScore', score)
         return window.location.assign('/end.html')
     }
@@ -37,20 +37,21 @@ getNewQuestion = () => {
     progressBarFull.style.width = `${((questionCounter+1)/MAX_QUESTIONS) * 100}%`
     question.innerText = currentQuestion.question
 
-    //showing all 4 possible answers of the question 
+    //showing all possible answers of the question 
     let j = 0
     for(let i = 0; i < currentQuestion.choices.length; i++){
         j++
         document.getElementsByClassName("choice-container")[i].style.display = "flex"
         choices[i].innerText = currentQuestion.choices[i].answer
     }
-    //showing 2 possible answers of a bool question
+    //if question has less than 4 answeres hide the remaining options
     while(j < 4){
         document.getElementsByClassName("choice-container")[j].style.display = "none"
         j++
     }
-    acceptingAnswers = true
-    questionCounter++
+    
+    acceptingAnswers = true //allow users to select answeres - once per question
+    questionCounter++ 
 }
 
 //gifs' arrays
@@ -60,10 +61,10 @@ let wrongImages = ['gifs/booho.gif', 'gifs/x.gif', 'gifs/wrong.gif', 'gifs/wrong
 choices.forEach(choice => {
     //on click listener 
     choice.addEventListener('click', e => {
-        if(!acceptingAnswers) return
-        acceptingAnswers = false
-        const selectedChoice = e.target
-        const selectedAnswer = selectedChoice.dataset['number']
+        if(!acceptingAnswers) return //if user already selected a question then disallow for further actions on the question
+        acceptingAnswers = false 
+        const selectedChoice = e.target //stores the chosen element 
+        const selectedAnswer = selectedChoice.dataset['number'] // gets the number of the element 
 
         //if the selected answer is correct then make the answer green, else make it red
         const classToApply = currentQuestion.choices[selectedAnswer].is_correct ? 'correct' : 'incorrect'
@@ -73,7 +74,7 @@ choices.forEach(choice => {
             document.getElementById("difficulty-indicator").style.display = "none"
         }
 
-        //Scoring the correct answers according to the question's difficulty
+        //scoring the correct answers according to the question's difficulty
         if(classToApply === 'correct'){
             switch(difficultyQuestion[questionCounter-1]){
                 case 'easy':
@@ -96,11 +97,11 @@ choices.forEach(choice => {
             document.getElementById("compliment").src = wrongImages[randomWrongs]
             document.getElementById("compliment").style.display = "flex" 
         }
-
         
+        //show a green/red indicator
         selectedChoice.parentElement.classList.add(classToApply)
         
-        //produce a new question when the timer is at 0 seconds
+        //produce a new question after an answer is selected
         setTimeout(() => {
             selectedChoice.parentElement.classList.remove(classToApply)
             getNewQuestion()
@@ -122,7 +123,7 @@ incrementScore = num => {
      var interval = setInterval(function(){
          timeCount--
          document.getElementById('time-sec').innerText=timeCount
-         if(timeCount===0){
+         if(timeCount===0){ //when the timer is at 0 seconds, a new question is produced
             getNewQuestion()
             timeCount = 16
          }
@@ -133,16 +134,18 @@ incrementScore = num => {
  //fetching the question from the given API
 fetchQuestions = (count = 2)=>{
     document.getElementById("loading").style.display = "block"
+    //fetch questions from remote server, with a maximum of 'count' items
     let request = new XMLHttpRequest()
     request.open("GET", `https://opentdb.com/api.php?amount=${count}`)
     request.send()
-    request.onload = () => {
-        if(request.status !== 200) {
+    request.onload = () => { //on success parse the response and store in local array
+        if(request.status !== 200) { //check successs status
             console.log(`error ${request.status} ${request.statusText}`) 
             return 
         }
         const fetchedQuestions = JSON.parse(request.response).results
         fetchedQuestions.forEach(q => {
+            //for each question insert the questions and the answers to an array, decode HTML to avoid any weird characters, add to difficulty array as well
             let questionToinsert ={
                 question: decodeHTMLEntities(q.question),
                 choices: []

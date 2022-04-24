@@ -124,7 +124,7 @@ h2{
 
 
 
-/*Game (Questions) Page */
+/******* Game (Questions) Page *******/
 .title{
     font-size: 8rem;
     color: rgb(131, 237, 224);
@@ -226,7 +226,7 @@ h2{
     color: rgb(30, 213, 190);
 }
 
-/* Time Left Section*/
+/* Time Left Section */
 .timer{
     display: flex;
     align-items: center;
@@ -327,7 +327,7 @@ h2{
 }
 
 
-/* End Page */
+/******* End Page *******/
  .end-form-container{
      display: flex;
      flex-direction: column;
@@ -384,7 +384,7 @@ h2{
 }
 
 
-/* High Score Page */
+/******* High Score Page *******/
 #leader-board{
     font-size: 180px;
     color: rgb(131, 237, 224);
